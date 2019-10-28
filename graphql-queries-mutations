@@ -1,0 +1,102 @@
+// insert pessoa física
+mutation {
+  createPerson(person: {
+    name: "JEOVANO COUTINHO",
+    cpf: "10101010101",
+    gender: "Masculino",
+    birthDate: "1965-01-01T04:00:00.000Z",
+    email: "jeo@teste.com",
+    phones: ["String"],
+    photo: "http://foto.com",
+    address: {
+      street: "String",
+      number: "String",
+      tip: "String",
+      city: "String",
+      state: "String",
+      zipCode: "String",
+    }
+  })
+}
+
+// insert pessoa jurídica
+mutation {
+  createPerson(person: {
+    name: "Foo Bar solutions",
+    companyName: "FullStack solutions",
+    cnpj: "61690354000108",
+    email: "contato@fssolutions.com",
+    phones: ["String"],
+    photo: "http://foto.com",
+    address: {
+      street: "rua xxxxxxxx",
+      number: "1234",
+      tip: "fim da rua",
+      city: "Curitiba",
+      state: "PR",
+      zipCode: "06542-089",
+    }
+  })
+}
+
+// query pessoa jurídica
+{
+  getPerson(cnpj: "61690354000108") {
+    companyName
+    kind
+    name
+    cnpj
+    email
+    address {
+      street
+      number
+      city
+      state
+      zipCode
+    }
+  }
+}
+
+// query pessoa física
+{
+  getPerson(cpf: "10101010101") {
+    kind
+    name
+    cpf
+    birthDate
+    gender
+    email
+    address {
+      street
+      number
+      city
+      state
+      zipCode
+    }
+  }
+}
+
+// update pessoa física
+mutation {
+  updatePerson(cpf: "10101010101", person:{
+  	name: "Bjorn Ironside"
+    //... qualquer campo a mais que desejar ser alterado (conforme o schema de insert)
+  })  
+}
+
+// update pessoa jurídica
+mutation {
+  updatePerson(cnpj: "61690354000108", person:{
+  	name: "Moe's"
+    //... qualquer campo a mais que desejar ser alterado (conforme o schema de insert)
+  })  
+}
+
+// delete pessoa física
+mutation {
+  deletePerson(cpf: "10101010101")  
+}
+
+mutation {
+  deletePerson(cnpj: "61690354000108")  
+}
