@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node src/app.js"
+  },
   "dependencies": {
     "@hapi/joi": "^16.1.7",
     "apollo-server": "^2.9.7",
